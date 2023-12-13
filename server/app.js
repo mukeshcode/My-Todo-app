@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
 dotenv.config();
 
 const app = express();
@@ -37,9 +38,7 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
+app.use(express.static(path.join(__dirname, '../build')));
 
 // Create a new todo
 app.post('/todos', async (req, res) => {
