@@ -20,11 +20,24 @@ function App() {
   },[])
 
   function addNote(noteTitle, noteBody) {
-    setNotes(prev => [...prev, { title: noteTitle, description: noteBody }]);
+    axios.post('http://localhost:3003/todos', { title: noteTitle, description: noteBody })
+      .then((data) => {
+        const oneNotes = data.data;
+        setNotes(prev => [...prev, { title: oneNotes.title, description: oneNotes.description, _id: oneNotes._id }]);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
-  function deleteNote(index) {
-    setNotes(prev => prev.filter((note, ind) => { return index !== ind; }))
+  function deleteNote(id) {
+    axios.delete(`http://localhost:3003/todos/${id}`)
+      .then(() => {
+        setNotes(prev => prev.filter((note, ind) => id !== note._id))
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   return (
@@ -34,7 +47,7 @@ function App() {
         <InputNote addNote={addNote} />
       </main>
       <main>
-        {notes.map((note, index) => <Note key={index} id={index} title={note.title} description={note.description} delNote={deleteNote} />)}
+        {notes.map((note) => <Note key={note._id} id={note._id} title={note.title} description={note.description} delNote={deleteNote} />)}
       </main>
       <Footer />
     </div>
