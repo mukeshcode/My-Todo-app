@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playpen+Sans&display=swap');
+
+:root{
+  --body-bg : #eeeeee;
+  --header-bg :#f5ba13;
+  --note-bg : #ffffff;
+  /* --footer-bg: ; */
+
+  --header-color :#ffffff;
+  --para-color :#000000;
+  --footer-color : #cccccc;
+
+  --title-font : 'Montserrat', sans-serif;
+  --para-font : 'Playpen Sans', cursive;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body, input, textarea{
+  background-color: var(--body-bg);
+  font-family: var(--title-font);
+}
+
+
+header{
+  padding: 1.5rem;
+  background-color: var(--header-bg);
+  color: var(--header-color);
+  box-shadow: 0px 0px 15px 0px #dbc7c7;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+article.note-container{
+  background-color: var(--note-bg);
+  padding: 1.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
+  font-family: var(--para-font);
+  box-shadow: 0px 0px 15px 0px #dbc7c7;
+  border-radius: 0.5rem;
+  width: 360px;
+}
+
+footer{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: var(--footer-color);
+}
+
+.input-note-container > *{
+  border: none;
+  background-color: transparent;
+  outline : none;
+}
+.input-note-container input{
+  font-size: 2rem;
+}
+
+.input-note-container textarea{
+  resize: none;
+  border: none;
+}
+
+.input-note-container{
+  position: relative;
+}
+
+.input-note-container button{
+  font-size: 1.25rem;
+  color: white;
+  background-color: var(--header-bg);
+  /* display: inline; */
+  align-self: center;
+  padding: 0.5rem;
+  border-radius : 50% 0 0 0;
+  cursor : pointer;
+  position: absolute;
+  bottom : 0;
+  right: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.input-note-container button:hover{
+  background-color: #ff8800;
+}
+
+
+.static-note-container button{
+  background-color: brown;
+  transition: all 0.1s ease-in-out;
+}
+
+.static-note-container button:hover{
+  background-color: rgb(124, 17, 17);
+
+}
