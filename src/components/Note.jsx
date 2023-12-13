@@ -6,11 +6,10 @@ function Note(props) {
     props.delNote(props.id);
   }
 
-
   return (
     <article className="note-container input-note-container static-note-container">
       <h1>{props.title}</h1>
-      <p>{props.content}</p>
+      <p>{props.description}</p>
       <button onClick={handleClick}>-</button>
     </article>
   );

@@ -21,7 +21,19 @@ const todoSchema = new mongoose.Schema({
 const Todo = mongoose.model('Todo', todoSchema);
 
 app.use((req, res, next) => {
-    console.log('Method:',req.method, 'URL:', req.url);
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
+
+app.use((req, res, next) => {
+    console.log('Method:', req.method, 'URL:', req.url);
     next();
 })
 
