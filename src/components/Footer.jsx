@@ -2,11 +2,11 @@ import React from "react";
 
 const currYear = new Date().getFullYear();
 
-function Footer(){
+function Footer() {
   return (
-          <footer>
-            <p>Copyright &#169; {currYear}</p>
-          </footer>
+    <footer>
+      <p>Copyright &#169; {currYear}</p>
+    </footer>
   );
 }
 
